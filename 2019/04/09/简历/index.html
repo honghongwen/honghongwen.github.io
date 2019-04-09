@@ -432,39 +432,6 @@
           
   <div class="comments" id="comments">
     
-	<div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
-	<div id="container" style="display:none"></div>
-	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"> 
-	<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script> 
-	<script> 
-	const myTheme = { 
-	   render(state, instance) { 
-	      const container = document.createElement('div'); 
-	      container.lang = "en-US"; 
-	      container.className = 'gitment-container gitment-root-container'; 
-	      container.appendChild(instance.renderHeader(state, instance)); 
-  	      container.appendChild(instance.renderEditor(state, instance)); 
-	      container.appendChild(instance.renderComments(state, instance)); 
-	      container.appendChild(instance.renderFooter(state, instance)); 
-	      return container; 
-	     }
-	 } 
-	function showGitment() {
-		$("#gitment_title").attr("style", "display:none"); 
-		$("#container").attr("style", "").addClass("gitment_container"); 
-		var gitment = new Gitment({ 
-			id: window.location.pathname, 
-			theme: myTheme, 
-			owner: 'honghongwen', 
-			repo: 'https://github.com/honghongwen/honghongwen.github.io', 
-			oauth: { client_id: '8e97f5d2e8afc56fd361', 
-			client_secret: 'df6163eda41af7a06f951ea6b644013a5406ae8f' 
-				}
-			}); 
-			gitment.render('container'); 
-	} 
-	</script>
-    
   </div>
 
 
