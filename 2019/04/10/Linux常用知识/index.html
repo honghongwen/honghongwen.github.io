@@ -683,33 +683,20 @@
 
 
 
-
-<!-- LOCAL: You can save these files to your site and update links -->
-  
   <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
   <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-<!-- END LOCAL -->
-
-    
-      <script type="text/javascript">
-      function renderGitalk(){
+   <script type="text/javascript">
         var gitalk = new Gitalk({
-            owner: 'honghongwen',
-            repo: 'honghongwen.github.io',
-            clientID: '8e97f5d2e8afc56fd361# clientID',
-            clientSecret: 'df6163eda41af7a06f951ea6b644013a5406ae8f# clientSecret',
-            admin: 'honghongwen# Github repository collaborators. (Ensure having write access to this repository)',
-            
-              distractionFreeMode: 'first# Facebook-like distraction free mode'
-            
-            });
-        gitalk.render('gitalk-container');
-      }
-      renderGitalk();
-      </script>
-    
-
-
+          clientID: '',
+          clientSecret: '',
+          repo: 'honghongwen.github.io',
+          owner: '',
+          admin: ['honghongwen# Github repository collaborators. (Ensure having write access to this repository)'],
+          id: location.pathname,
+          distractionFreeMode: 'true# Facebook-like distraction free mode'
+        })
+        gitalk.render('gitalk-container')
+    </script>
 
 
 
