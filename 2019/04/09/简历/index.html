@@ -451,10 +451,7 @@
           
   <div class="comments" id="comments">
     
-    <div class="comments" id="comments">
       <div id="gitalk-container"></div>
-    </div>
-    
   </div>
 
 
@@ -718,16 +715,16 @@
   <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
    <script type="text/javascript">
         var gitalk = new Gitalk({
-          client_id: '8e97f5d2e8afc56fd361# clientID',
-          client_secret: 'df6163eda41af7a06f951ea6b644013a5406ae8f# clientSecret',
+          clientID: '8e97f5d2e8afc56fd361',
+          clientSecret: 'df6163eda41af7a06f951ea6b644013a5406ae8f',
           repo: 'honghongwen.github.io',
-          owner: '',
-          admin: ['honghongwen# Github repository collaborators. (Ensure having write access to this repository)'],
+          owner: 'honghongwen',
+          admin: ['honghongwen'],
           id: location.pathname,
-          distractionFreeMode: 'true# Facebook-like distraction free mode'
+          distractionFreeMode: 'true'
         })
-        gitalk.render('gitalk-container')
-    </script>
+        gitalk.render('gitalk-container')           
+       </script>
 
 
 
