@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="记录下之前工作中关于java到底是如何进行参数传递的一些个人见解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java按值传递的一些事情">
+<meta property="og:url" content="http://yoursite.com/2019/04/24/java按值传递的一些事情/index.html">
+<meta property="og:site_name" content="Europa">
+<meta property="og:description" content="记录下之前工作中关于java到底是如何进行参数传递的一些个人见解">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/04/24/java按值传递的一些事情/value-transfer.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/04/24/java按值传递的一些事情/list.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/04/24/java按值传递的一些事情/integer.jpg">
+<meta property="og:updated_time" content="2019-04-24T07:42:59.707Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java按值传递的一些事情">
+<meta name="twitter:description" content="记录下之前工作中关于java到底是如何进行参数传递的一些个人见解">
+<meta name="twitter:image" content="http://yoursite.com/2019/04/24/java按值传递的一些事情/value-transfer.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/24/java按值传递的一些事情/">
+
+
+
+
+
+  <title>java按值传递的一些事情 | Europa</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Europa</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/24/java按值传递的一些事情/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Europa">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/dog1.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Europa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java按值传递的一些事情</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-24T14:26:29+08:00">
+                2019-04-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="/2019/04/24/java按值传递的一些事情/value-transfer.jpg" width="50%"></p>
+<p>记录下之前工作中关于java到底是如何进行参数传递的一些个人见解</p>
+<a id="more"></a>
+<h5 id="关于java中参数到底是如何进行传递，以及传递过程中有哪些需要注意的点存在，我相信大家肯定都有自己的理解。已下均为个人理解，如有缺漏，请自行判断。"><a href="#关于java中参数到底是如何进行传递，以及传递过程中有哪些需要注意的点存在，我相信大家肯定都有自己的理解。已下均为个人理解，如有缺漏，请自行判断。" class="headerlink" title="关于java中参数到底是如何进行传递，以及传递过程中有哪些需要注意的点存在，我相信大家肯定都有自己的理解。已下均为个人理解，如有缺漏，请自行判断。"></a>关于java中参数到底是如何进行传递，以及传递过程中有哪些需要注意的点存在，我相信大家肯定都有自己的理解。已下均为个人理解，如有缺漏，请自行判断。</h5><h5 id="1-起因：因为之前工作中，或多或少有小伙伴问过这方面的东西，自己也没有去好好总结过。"><a href="#1-起因：因为之前工作中，或多或少有小伙伴问过这方面的东西，自己也没有去好好总结过。" class="headerlink" title="1.起因：因为之前工作中，或多或少有小伙伴问过这方面的东西，自己也没有去好好总结过。"></a>1.起因：因为之前工作中，或多或少有小伙伴问过这方面的东西，自己也没有去好好总结过。</h5><p>关于这些基础方面的知识，自己在这段时间会花不少时间做下总结，因为在离职状态，一是有时间，二是打磨下技术，好好的为下份工作以及面试做下准备。</p>
+<p>注： 目前结合起来的书籍有Spring源码深度解析、java核心技术卷（一）。</p>
+<p>本知识点在java核心技术卷一中也有说明。在第十章第四小节4.5 方法参数篇。</p>
+<p>2.例子</p>
+<ul>
+<li>基本数据类型</li>
+</ul>
+<p>基本数据类型总是特殊的，首先讲的就是基本数据类型，一个定义的基本数据类型如:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> value = <span class="number">2</span>;</span><br><span class="line">	valueHandle(value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">valueHandle</span><span class="params">(<span class="keyword">int</span> copyValue)</span></span>&#123;</span><br><span class="line">    copyValue = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这种情况，无论valueHandle方法怎么对value进行处理，最终本方法体中的value依然会是2，因为对于基本类型，他的处理直接就是将值拷贝一份到方法参数中，因此对于拷贝的值copyValue做出任何处理，不会对value有分毫影响。然而问题接着就来了。</p>
+<ul>
+<li>引用数据类型</li>
+</ul>
+<p>引用数据类型中，又会分为两种情况。</p>
+<blockquote>
+<h4 id="1-提供了改变自身方法的类型，如List，数组，封装的pojo等。"><a href="#1-提供了改变自身方法的类型，如List，数组，封装的pojo等。" class="headerlink" title="1.提供了改变自身方法的类型，如List，数组，封装的pojo等。"></a>1.提供了改变自身方法的类型，如List，数组，封装的pojo等。</h4></blockquote>
+<p>对于此类，作出改变时，不会去内存中new出一个新的对象，即不会去调用构造方法在堆中新分配一块区域进行存储</p>
+<p>对于此类，理解起来很容易，如</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;(Arrays.asList(<span class="string">"l1"</span>,<span class="string">"l2"</span>,<span class="string">"l3"</span>));</span><br><span class="line">    swap(list);</span><br><span class="line">    sout(list.size());</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(List copyList)</span></span>&#123;</span><br><span class="line">    copyList.add(<span class="string">"l4"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这种，很容易就改变了list的size，这种情况是因为，将值传递过去后，是拷贝了一份引用变量copyList进行指引，所以list和copyList都是指向堆中的同一个对象，因此修改了copyList中的对象，看起来就像是引用传递一般，list也做出了改变.对于是否是引用传递，这点很容易给出反例,如下图</p>
+<p><img src="/2019/04/24/java按值传递的一些事情/list.jpg"></p>
+<p>如果说我不对引用指向的值进行修改，只是将两个引用变量交换，丝毫不会印象到main中的s1和s2。</p>
+<blockquote>
+<h4 id="2-未提供改变自身方法的类型，如包装类型，String等"><a href="#2-未提供改变自身方法的类型，如包装类型，String等" class="headerlink" title="2.未提供改变自身方法的类型，如包装类型，String等"></a>2.未提供改变自身方法的类型，如包装类型，String等</h4></blockquote>
+<p>这类对象很容易混淆视听，因为：</p>
+<p><img src="/2019/04/24/java按值传递的一些事情/integer.jpg"></p>
+<p>看到没，如果说按上所属，Integer为包装类型，包装类型也不是基本数据类型呀，</p>
+<p>那他的值为什么没有跟着做出改变呢？</p>
+<p>咋一看挺糊弄人的，好想是这么回事，仔细想想很容易就能想清楚，对于这些类型，没有改变自身的方法。line 34中copyValue = 1111…;不就是new Integer(…)嘛，因为针对copyValue这个引用变量给他重新牵引向了11111111所在的内存地址，所以他和value两个值之间呈现出了两条平行线，互不相干，自然不会影响value的值。</p>
+<p>end.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/17/Spring源码的一些学习（一）/" rel="next" title="Spring源码的一些学习（一）">
+                <i class="fa fa-chevron-left"></i> Spring源码的一些学习（一）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="gitalk-container"></div>
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/uploads/dog1.jpeg" alt="Europa">
+          <p class="site-author-name" itemprop="name">Europa</p>
+           
+              <p class="site-description motion-element" itemprop="description">记录下技术方面的点点滴滴～</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/honghongwen" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#关于java中参数到底是如何进行传递，以及传递过程中有哪些需要注意的点存在，我相信大家肯定都有自己的理解。已下均为个人理解，如有缺漏，请自行判断。"><span class="nav-number">1.</span> <span class="nav-text">关于java中参数到底是如何进行传递，以及传递过程中有哪些需要注意的点存在，我相信大家肯定都有自己的理解。已下均为个人理解，如有缺漏，请自行判断。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-起因：因为之前工作中，或多或少有小伙伴问过这方面的东西，自己也没有去好好总结过。"><span class="nav-number">2.</span> <span class="nav-text">1.起因：因为之前工作中，或多或少有小伙伴问过这方面的东西，自己也没有去好好总结过。</span></a></li></ol><li class="nav-item nav-level-4"><a class="nav-link" href="#1-提供了改变自身方法的类型，如List，数组，封装的pojo等。"><span class="nav-number"></span> <span class="nav-text">1.提供了改变自身方法的类型，如List，数组，封装的pojo等。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-未提供改变自身方法的类型，如包装类型，String等"><span class="nav-number"></span> <span class="nav-text">2.未提供改变自身方法的类型，如包装类型，String等</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Europa</span>
+</div>
+
+
+<div class="powered-by">
+  留点足迹
+</div>
+
+<div class="theme-info">
+  主题
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="/js/src/md5.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '8e97f5d2e8afc56fd361',
+          clientSecret: 'df6163eda41af7a06f951ea6b644013a5406ae8f',
+          repo: 'honghongwen.github.io',
+          owner: 'honghongwen',
+          admin: ['honghongwen'],
+          id: md5(location.pathname),
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
