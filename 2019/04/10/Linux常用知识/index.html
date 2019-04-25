@@ -94,20 +94,20 @@
 
 
 
-<meta name="description" content="先说一下，这是第一篇正式博客（其实也不算，一年前自己在老东家时就搭过，再之前也混迹于各个论坛，但是没有坚持下来后来也就不了了之。直到最近突然有了危机感！没错，危机感！可能是自己没啥入人眼的简历吧…往往意动的公司总是面试机会都木有啊有木有！！！可能想跟靠谱的人混之前得保证自己是个靠谱的人，虽然我成天嘤嘤嘤、一副划水老油子的模样！可这是性格啊！性格！实际上是个178，胡子比头发多的程序员好嘛= =。">
+<meta name="description" content="稍微记录下日常使用的一些linux命令及操作，之后可能会继续更新">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux常用知识">
 <meta property="og:url" content="http://yoursite.com/2019/04/10/Linux常用知识/index.html">
 <meta property="og:site_name" content="Europa">
-<meta property="og:description" content="先说一下，这是第一篇正式博客（其实也不算，一年前自己在老东家时就搭过，再之前也混迹于各个论坛，但是没有坚持下来后来也就不了了之。直到最近突然有了危机感！没错，危机感！可能是自己没啥入人眼的简历吧…往往意动的公司总是面试机会都木有啊有木有！！！可能想跟靠谱的人混之前得保证自己是个靠谱的人，虽然我成天嘤嘤嘤、一副划水老油子的模样！可这是性格啊！性格！实际上是个178，胡子比头发多的程序员好嘛= =。">
+<meta property="og:description" content="稍微记录下日常使用的一些linux命令及操作，之后可能会继续更新">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/04/10/Linux常用知识/linux.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/10/Linux常用知识/free.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/10/Linux常用知识/centos.png">
-<meta property="og:updated_time" content="2019-04-10T17:12:48.220Z">
+<meta property="og:updated_time" content="2019-04-25T08:42:23.150Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux常用知识">
-<meta name="twitter:description" content="先说一下，这是第一篇正式博客（其实也不算，一年前自己在老东家时就搭过，再之前也混迹于各个论坛，但是没有坚持下来后来也就不了了之。直到最近突然有了危机感！没错，危机感！可能是自己没啥入人眼的简历吧…往往意动的公司总是面试机会都木有啊有木有！！！可能想跟靠谱的人混之前得保证自己是个靠谱的人，虽然我成天嘤嘤嘤、一副划水老油子的模样！可这是性格啊！性格！实际上是个178，胡子比头发多的程序员好嘛= =。">
+<meta name="twitter:description" content="稍微记录下日常使用的一些linux命令及操作，之后可能会继续更新">
 <meta name="twitter:image" content="http://yoursite.com/2019/04/10/Linux常用知识/linux.png">
 
 
@@ -323,7 +323,7 @@
       
 
       
-        <p><img src="/2019/04/10/Linux常用知识/linux.png" width="50%"><br>先说一下，这是第一篇正式博客（其实也不算，一年前自己在老东家时就搭过，再之前也混迹于各个论坛，但是没有坚持下来后来也就不了了之。直到最近突然有了危机感！没错，危机感！可能是自己没啥入人眼的简历吧…往往意动的公司总是面试机会都木有啊有木有！！！可能想跟靠谱的人混之前得保证自己是个靠谱的人，虽然我成天嘤嘤嘤、一副划水老油子的模样！可这是性格啊！性格！实际上是个178，胡子比头发多的程序员好嘛= =。 好了，不叨叨了，既然打算做这件事情了，就用心把它做好）。稍微记录下日常使用的一些linux命令及操作，之后会持续更新<br><a id="more"></a></p>
+        <p><img src="/2019/04/10/Linux常用知识/linux.png" width="50%"><br>稍微记录下日常使用的一些linux命令及操作，之后可能会继续更新<br><a id="more"></a></p>
 <h2 id="Linux常用知识整理"><a href="#Linux常用知识整理" class="headerlink" title="Linux常用知识整理"></a>Linux常用知识整理</h2><hr>
 <h3 id="1-查看配置"><a href="#1-查看配置" class="headerlink" title="1.查看配置"></a>1.查看配置</h3><ul>
 <li><p>free -m</p>
@@ -357,6 +357,8 @@
 <li>cat 文件 查看文件全部信息</li>
 <li>tail -n 1000f  {xxx.logs} 查看文件的后一千行</li>
 <li>su 切换管理员权限</li>
+<li>scp [source] root@ip:[target]  将文件上传到服务器</li>
+<li>ssh root@ip -p [port]  连接上服务器</li>
 </ul>
 
       

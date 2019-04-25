@@ -104,7 +104,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/04/24/java按值传递的一些事情/value-transfer.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/04/24/java按值传递的一些事情/list.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/04/24/java按值传递的一些事情/integer.jpg">
-<meta property="og:updated_time" content="2019-04-24T07:42:59.707Z">
+<meta property="og:updated_time" content="2019-04-25T09:58:46.365Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java按值传递的一些事情">
 <meta name="twitter:description" content="记录下之前工作中关于java到底是如何进行参数传递的一些个人见解">
@@ -326,7 +326,7 @@
         <p><img src="/2019/04/24/java按值传递的一些事情/value-transfer.jpg" width="50%"></p>
 <p>记录下之前工作中关于java到底是如何进行参数传递的一些个人见解</p>
 <a id="more"></a>
-<h5 id="关于java中参数到底是如何进行传递，以及传递过程中有哪些需要注意的点存在，我相信大家肯定都有自己的理解。已下均为个人理解，如有缺漏，请自行判断。"><a href="#关于java中参数到底是如何进行传递，以及传递过程中有哪些需要注意的点存在，我相信大家肯定都有自己的理解。已下均为个人理解，如有缺漏，请自行判断。" class="headerlink" title="关于java中参数到底是如何进行传递，以及传递过程中有哪些需要注意的点存在，我相信大家肯定都有自己的理解。已下均为个人理解，如有缺漏，请自行判断。"></a>关于java中参数到底是如何进行传递，以及传递过程中有哪些需要注意的点存在，我相信大家肯定都有自己的理解。已下均为个人理解，如有缺漏，请自行判断。</h5><h5 id="1-起因：因为之前工作中，或多或少有小伙伴问过这方面的东西，自己也没有去好好总结过。"><a href="#1-起因：因为之前工作中，或多或少有小伙伴问过这方面的东西，自己也没有去好好总结过。" class="headerlink" title="1.起因：因为之前工作中，或多或少有小伙伴问过这方面的东西，自己也没有去好好总结过。"></a>1.起因：因为之前工作中，或多或少有小伙伴问过这方面的东西，自己也没有去好好总结过。</h5><p>关于这些基础方面的知识，自己在这段时间会花不少时间做下总结，因为在离职状态，一是有时间，二是打磨下技术，好好的为下份工作以及面试做下准备。</p>
+<h5 id="关于java中参数到底是如何进行传递，以及传递过程中有哪些需要注意的点存在，我相信大家肯定都有自己的理解。已下均为个人理解，如有缺漏，请自行判断。"><a href="#关于java中参数到底是如何进行传递，以及传递过程中有哪些需要注意的点存在，我相信大家肯定都有自己的理解。已下均为个人理解，如有缺漏，请自行判断。" class="headerlink" title="关于java中参数到底是如何进行传递，以及传递过程中有哪些需要注意的点存在，我相信大家肯定都有自己的理解。已下均为个人理解，如有缺漏，请自行判断。"></a>关于java中参数到底是如何进行传递，以及传递过程中有哪些需要注意的点存在，我相信大家肯定都有自己的理解。已下均为个人理解，如有缺漏，请自行判断。</h5><h5 id="1-起因：因为之前工作中，有小伙伴问过这方面的东西，自己也没有去好好总结过。"><a href="#1-起因：因为之前工作中，有小伙伴问过这方面的东西，自己也没有去好好总结过。" class="headerlink" title="1.起因：因为之前工作中，有小伙伴问过这方面的东西，自己也没有去好好总结过。"></a>1.起因：因为之前工作中，有小伙伴问过这方面的东西，自己也没有去好好总结过。</h5><p>关于这些基础方面的知识，自己在这段时间会花不少时间做下总结，因为在离职状态，一是有时间，二是打磨下技术，好好的为下份工作以及面试做下准备。</p>
 <p>注： 目前结合起来的书籍有Spring源码深度解析、java核心技术卷（一）。</p>
 <p>本知识点在java核心技术卷一中也有说明。在第十章第四小节4.5 方法参数篇。</p>
 <p>2.例子</p>
@@ -341,20 +341,20 @@
 </ul>
 <p>引用数据类型中，又会分为两种情况。</p>
 <blockquote>
-<h4 id="1-提供了改变自身方法的类型，如List，数组，封装的pojo等。"><a href="#1-提供了改变自身方法的类型，如List，数组，封装的pojo等。" class="headerlink" title="1.提供了改变自身方法的类型，如List，数组，封装的pojo等。"></a>1.提供了改变自身方法的类型，如List，数组，封装的pojo等。</h4></blockquote>
+<h4 id="1-提供了改变自身方法的类型，如List，数组，StringBuilder-封装的pojo等。"><a href="#1-提供了改变自身方法的类型，如List，数组，StringBuilder-封装的pojo等。" class="headerlink" title="1.提供了改变自身方法的类型，如List，数组，StringBuilder,封装的pojo等。"></a>1.提供了改变自身方法的类型，如List，数组，StringBuilder,封装的pojo等。</h4></blockquote>
 <p>对于此类，作出改变时，不会去内存中new出一个新的对象，即不会去调用构造方法在堆中新分配一块区域进行存储</p>
 <p>对于此类，理解起来很容易，如</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;(Arrays.asList(<span class="string">"l1"</span>,<span class="string">"l2"</span>,<span class="string">"l3"</span>));</span><br><span class="line">    swap(list);</span><br><span class="line">    sout(list.size());</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(List copyList)</span></span>&#123;</span><br><span class="line">    copyList.add(<span class="string">"l4"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这种，很容易就改变了list的size，这种情况是因为，将值传递过去后，是拷贝了一份引用变量copyList进行指引，所以list和copyList都是指向堆中的同一个对象，因此修改了copyList中的对象，看起来就像是引用传递一般，list也做出了改变.对于是否是引用传递，这点很容易给出反例,如下图</p>
 <p><img src="/2019/04/24/java按值传递的一些事情/list.jpg"></p>
-<p>如果说我不对引用指向的值进行修改，只是将两个引用变量交换，丝毫不会印象到main中的s1和s2。</p>
+<p>如果说我不对引用指向的值进行修改，只是将两个引用变量交换，丝毫不会影响到main中的s1和s2。</p>
 <blockquote>
 <h4 id="2-未提供改变自身方法的类型，如包装类型，String等"><a href="#2-未提供改变自身方法的类型，如包装类型，String等" class="headerlink" title="2.未提供改变自身方法的类型，如包装类型，String等"></a>2.未提供改变自身方法的类型，如包装类型，String等</h4></blockquote>
 <p>这类对象很容易混淆视听，因为：</p>
 <p><img src="/2019/04/24/java按值传递的一些事情/integer.jpg"></p>
-<p>看到没，如果说按上所属，Integer为包装类型，包装类型也不是基本数据类型呀，</p>
+<p>如上图，如果是按上所述，Integer为包装类型，包装类型也不是基本数据类型呀，</p>
 <p>那他的值为什么没有跟着做出改变呢？</p>
-<p>咋一看挺糊弄人的，好想是这么回事，仔细想想很容易就能想清楚，对于这些类型，没有改变自身的方法。line 34中copyValue = 1111…;不就是new Integer(…)嘛，因为针对copyValue这个引用变量给他重新牵引向了11111111所在的内存地址，所以他和value两个值之间呈现出了两条平行线，互不相干，自然不会影响value的值。</p>
+<p>咋一看挺糊弄人的，好像是这么回事，但是仔细想想很容易就能想清楚，对于这些类型，没有改变自身的方法。line 34中copyValue = 1111…;不就是new Integer(…)嘛，因为针对copyValue这个引用变量给他重新牵引向了11111111所在的内存地址，所以他和value两个值之间呈现出了两条平行线，互不相干，自然不会影响value的值。</p>
 <p>end.</p>
 
       
@@ -516,7 +516,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#关于java中参数到底是如何进行传递，以及传递过程中有哪些需要注意的点存在，我相信大家肯定都有自己的理解。已下均为个人理解，如有缺漏，请自行判断。"><span class="nav-number">1.</span> <span class="nav-text">关于java中参数到底是如何进行传递，以及传递过程中有哪些需要注意的点存在，我相信大家肯定都有自己的理解。已下均为个人理解，如有缺漏，请自行判断。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-起因：因为之前工作中，或多或少有小伙伴问过这方面的东西，自己也没有去好好总结过。"><span class="nav-number">2.</span> <span class="nav-text">1.起因：因为之前工作中，或多或少有小伙伴问过这方面的东西，自己也没有去好好总结过。</span></a></li></ol><li class="nav-item nav-level-4"><a class="nav-link" href="#1-提供了改变自身方法的类型，如List，数组，封装的pojo等。"><span class="nav-number"></span> <span class="nav-text">1.提供了改变自身方法的类型，如List，数组，封装的pojo等。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-未提供改变自身方法的类型，如包装类型，String等"><span class="nav-number"></span> <span class="nav-text">2.未提供改变自身方法的类型，如包装类型，String等</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#关于java中参数到底是如何进行传递，以及传递过程中有哪些需要注意的点存在，我相信大家肯定都有自己的理解。已下均为个人理解，如有缺漏，请自行判断。"><span class="nav-number">1.</span> <span class="nav-text">关于java中参数到底是如何进行传递，以及传递过程中有哪些需要注意的点存在，我相信大家肯定都有自己的理解。已下均为个人理解，如有缺漏，请自行判断。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-起因：因为之前工作中，有小伙伴问过这方面的东西，自己也没有去好好总结过。"><span class="nav-number">2.</span> <span class="nav-text">1.起因：因为之前工作中，有小伙伴问过这方面的东西，自己也没有去好好总结过。</span></a></li></ol><li class="nav-item nav-level-4"><a class="nav-link" href="#1-提供了改变自身方法的类型，如List，数组，StringBuilder-封装的pojo等。"><span class="nav-number"></span> <span class="nav-text">1.提供了改变自身方法的类型，如List，数组，StringBuilder,封装的pojo等。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-未提供改变自身方法的类型，如包装类型，String等"><span class="nav-number"></span> <span class="nav-text">2.未提供改变自身方法的类型，如包装类型，String等</span></a></li></div>
             
 
           </div>
