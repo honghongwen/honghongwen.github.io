@@ -94,23 +94,20 @@
 
 
 
-<meta name="description" content="记录下关于阅读Spring源码中衍生的一些问题，关于如何去阅读这种著名的框架源码其实没必要一头扎进去，借助开源的力量或者一些风评不错的书籍配合着阅读往往能让人容易理解而且不至于还没开始就让人衍生退意。如Spring源码深度解析。">
+<meta name="description" content="emmm….五一前一天接到个电面，是网易游戏打过来的 = =，面完的感觉是emm，面试官好客气(提前十分钟打电话给我说等下有个会要开，重新约了个时间，中间一直说不好意思，对不起对不起…弄的我不知所措。)…当然，客气归客气，后来面试的时候该问的问题一个都没少哈哈哈，问题不太深，但是也没那么简单，因为问题很广，知识面很全。当然，不管结果如何，我还是得一路复习下去。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring源码的一些学习（一）">
-<meta property="og:url" content="http://yoursite.com/2019/04/17/Spring源码的一些学习（一）/index.html">
+<meta property="og:title" content="Java集合分析">
+<meta property="og:url" content="http://yoursite.com/2019/05/03/Java集合分析/index.html">
 <meta property="og:site_name" content="Europa">
-<meta property="og:description" content="记录下关于阅读Spring源码中衍生的一些问题，关于如何去阅读这种著名的框架源码其实没必要一头扎进去，借助开源的力量或者一些风评不错的书籍配合着阅读往往能让人容易理解而且不至于还没开始就让人衍生退意。如Spring源码深度解析。">
+<meta property="og:description" content="emmm….五一前一天接到个电面，是网易游戏打过来的 = =，面完的感觉是emm，面试官好客气(提前十分钟打电话给我说等下有个会要开，重新约了个时间，中间一直说不好意思，对不起对不起…弄的我不知所措。)…当然，客气归客气，后来面试的时候该问的问题一个都没少哈哈哈，问题不太深，但是也没那么简单，因为问题很广，知识面很全。当然，不管结果如何，我还是得一路复习下去。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/04/17/Spring源码的一些学习（一）/spring_source_code.jpeg">
-<meta property="og:image" content="http://yoursite.com/2019/04/17/Spring源码的一些学习（一）/gradle.png">
-<meta property="og:image" content="http://yoursite.com/2019/04/17/Spring源码的一些学习（一）/gradle-v.png">
-<meta property="og:image" content="http://yoursite.com/2019/04/17/Spring源码的一些学习（一）/spring.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/04/17/Spring源码的一些学习（一）/defaultlistablebeanfactory.jpg">
-<meta property="og:updated_time" content="2019-04-17T05:37:42.701Z">
+<meta property="og:image" content="http://yoursite.com/2019/05/03/Java集合分析/java_collection.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/05/03/Java集合分析/collection.jpg">
+<meta property="og:updated_time" content="2019-05-05T12:48:56.882Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring源码的一些学习（一）">
-<meta name="twitter:description" content="记录下关于阅读Spring源码中衍生的一些问题，关于如何去阅读这种著名的框架源码其实没必要一头扎进去，借助开源的力量或者一些风评不错的书籍配合着阅读往往能让人容易理解而且不至于还没开始就让人衍生退意。如Spring源码深度解析。">
-<meta name="twitter:image" content="http://yoursite.com/2019/04/17/Spring源码的一些学习（一）/spring_source_code.jpeg">
+<meta name="twitter:title" content="Java集合分析">
+<meta name="twitter:description" content="emmm….五一前一天接到个电面，是网易游戏打过来的 = =，面完的感觉是emm，面试官好客气(提前十分钟打电话给我说等下有个会要开，重新约了个时间，中间一直说不好意思，对不起对不起…弄的我不知所措。)…当然，客气归客气，后来面试的时候该问的问题一个都没少哈哈哈，问题不太深，但是也没那么简单，因为问题很广，知识面很全。当然，不管结果如何，我还是得一路复习下去。">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/03/Java集合分析/java_collection.jpg">
 
 
 
@@ -139,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/04/17/Spring源码的一些学习（一）/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/03/Java集合分析/">
 
 
 
 
 
-  <title>Spring源码的一些学习（一） | Europa</title>
+  <title>Java集合分析 | Europa</title>
   
 
 
@@ -258,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/17/Spring源码的一些学习（一）/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/03/Java集合分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Europa">
@@ -275,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Spring源码的一些学习（一）</h1>
+          <h1 class="post-title" itemprop="name headline">Java集合分析</h1>
         
 
         <div class="post-meta">
@@ -287,8 +284,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-17T11:44:23+08:00">
-                2019-04-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-03T22:09:56+08:00">
+                2019-05-03
               </time>
             
 
@@ -325,32 +322,26 @@
       
 
       
-        <p><img src="/2019/04/17/Spring源码的一些学习（一）/spring_source_code.jpeg" width="50%"></p>
-<p>记录下关于阅读Spring源码中衍生的一些问题，关于如何去阅读这种著名的框架源码其实没必要一头扎进去，借助开源的力量或者一些风评不错的书籍配合着阅读往往能让人容易理解而且不至于还没开始就让人衍生退意。如Spring源码深度解析。</p>
+        <p><img src="/2019/05/03/Java集合分析/java_collection.jpg" width="50%"></p>
+<p>emmm….五一前一天接到个电面，是网易游戏打过来的 = =，面完的感觉是emm，面试官好客气(提前十分钟打电话给我说等下有个会要开，重新约了个时间，中间一直说不好意思，对不起对不起…弄的我不知所措。)…当然，客气归客气，后来面试的时候该问的问题一个都没少哈哈哈，问题不太深，但是也没那么简单，因为问题很广，知识面很全。当然，不管结果如何，我还是得一路复习下去。</p>
 <a id="more"></a>
-<h2 id="安装gradle"><a href="#安装gradle" class="headerlink" title="安装gradle"></a>安装gradle</h2><ul>
-<li><p>因为Spring是依赖于gradle做项目管理工具的，导入spring源码前得安装好gradle，之所以说mac环境做开发是真的好嗨…是因为让人很少再去为环境出错而烦恼</p>
-<p><img src="/2019/04/17/Spring源码的一些学习（一）/gradle.png"></p>
-</li>
-<li><p>如图，用mac强大的管理工具  homebrew安装好gradle，如果没使用过homebrew可以去了解一下。<a href="https://brew.sh/" target="_blank" rel="noopener">homebrew地址</a>。这样安装完成的gradle就不用再去配置环境变量了。当然，如果是win或linux的话，找篇靠谱的博客跟着步骤一步一步来就行了，再了解下gradle相关的知识，如果有maven基础的话了解起来应该更快了。</p>
-<p><img src="/2019/04/17/Spring源码的一些学习（一）/gradle-v.png"></p>
-</li>
-<li><p>gradle -v 能正常看到版本信息</p>
-</li>
-</ul>
-<h2 id="下载源码"><a href="#下载源码" class="headerlink" title="下载源码"></a>下载源码</h2><ul>
-<li><p>在github上找到spring的源码地址，找到文件夹clone下来即可</p>
-<p><a href="https://github.com/spring-projects/spring-framework" target="_blank" rel="noopener"></a></p>
-</li>
-<li><p>用idea打开源码,等他加载完成(需要一段时间，当然，你也可以选择只需要的包，将他的依赖包导入，这样能节省些时间)</p>
-<p><img src="/2019/04/17/Spring源码的一些学习（一）/spring.jpg"></p>
-</li>
-<li><p>查看观察的第一个类 DefaultListableBeanFactory的类继承关系</p>
-<p><img src="/2019/04/17/Spring源码的一些学习（一）/defaultlistablebeanfactory.jpg"></p>
-</li>
-<li><p>这样一步步下来，其实整个源码也是有迹可循的，其实为何要去阅读源码，这个大家各持所见，通过阅读源码，能学到不少的命名规范，以及源码内衍生出来的一堆衍生知识，比起嚷嚷着我要学习而无从下手，衍生为焦虑的堆积，阅读源码还是一种很不错的学习方法的。同时也是提高自信的一种方式，像之前吵吵的很火的为什么要学习英语这种问题。都是一个道理。举个列子，如上图SimpleAliasRegistry类实现了AliasRegisty，其中使用了ConcurrentHashMap做缓存,我对ConcurrentHashMap本身不够了解的话，我会继续去研究研究ConcurrentHashMap，以及map本身做本地缓存的方式，衍生到与ThreadLocal的使用方式，再到ConcurrentHashMap作为jdk的源码，大量使用的位运算符，这样一步步的继续下去，当然，整个过程是漫长的，但是这样一步步的学习下去会大幅度加强本身薄弱的知识面。工作也有一年多了，也遇到过形形色色不少的同行，印象最深的是老东家的老大教会了我很多东西，记得当时做微信公众号相关的时候，他带着我一步步跳到源码的底层去深究为何这般那般，他愿意教，我愿意学，说实话，一路走下来抱着感恩的心，不管生活如何，想起来还是有点温暖。最后也祝愿各位猿们生活顺心，工作顺利啦 = =。</p>
-</li>
-</ul>
+<h5 id="java集合的一些知识。"><a href="#java集合的一些知识。" class="headerlink" title="java集合的一些知识。"></a>java集合的一些知识。</h5><p>其实jdk的集合理解起来并不难，整合起来还是得从框架开始。理解了设计理念，整理起来就会顺利很多，jdk的集合框架图，如下：</p>
+<p><img src="/2019/05/03/Java集合分析/collection.jpg"></p>
+<p>当然，如LinkedHashSet和LinkedHashMap之类的，可以另做研究。</p>
+<p>如上图所示，Collection与Iterator与Map之间的依赖关系，hashSet与hashMap之间的依赖关系描述的非常棒。</p>
+<blockquote>
+<p>提个问题：其实细心的朋友或许也发现过，如ArrayList既然已经继承于AbstractList。那为何还要去实现List接口呢，这是个很有意思的问题。</p>
+<p>我查到的一些答案是：有说是方便动态代理的,还有google的员工说问过Josh说it was a mistake…我觉得是个很有意思的问题</p>
+<p><a href="http://stackoverflow.com/questions/2165204/why-does-linkedhashsete-extend-hashsete-and-implement-sete" target="_blank" rel="noopener">stackoverflow提问地址</a></p>
+</blockquote>
+<h5 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h5><p>collection下主要有list及set接口，collection是一个高度抽象出来的集合。包含了集合的基本操作，增、删、清空、遍历、大小、是否为空等等方法。</p>
+<p>且collection的所有子类都必须实现两种构造方法，无参和参数为collection的构造方法。后者可以用来转换collection的类型。</p>
+<h5 id="List"><a href="#List" class="headerlink" title="List"></a>List</h5><p>list是一个继承自collection的接口。list是有序的！队列,list中的每一个元素都有一个索引，第一个索引是0，之后依此+1，相较set而言，list允许有重复元素。既然list继承自collection，它包含collection中所有的方法。此外，由于是有序队列，它包含了对指定位置上的元素的一些增、删、查、改、截取子队列的操作。</p>
+<h5 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h5><p>set的api与collection一致。set没有重复的元素。</p>
+<h5 id="AbstractCollection"><a href="#AbstractCollection" class="headerlink" title="AbstractCollection"></a>AbstractCollection</h5><p>abstractCollection是一个抽象类，它实现了collection中大部分的方法，除size()及iterator()之外。由于其实现了collection的大部分方法，所以其方便了其他类实现collection接口。</p>
+<p>####AbstractList</p>
+<p>与AbstractCollection类似，继承自AbstractCollection，且实现了List接口，并且实现了iterator方法。依此类推。</p>
+<p>#####关于集合的相关知识就写这些。关键在于弄懂集合上的层次关系。这样才能更好的记忆并且再深层次的去学习。</p>
 
       
     </div>
@@ -375,8 +366,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/10/Linux常用知识/" rel="next" title="Linux常用知识">
-                <i class="fa fa-chevron-left"></i> Linux常用知识
+              <a href="/2019/04/24/java按值传递的一些事情/" rel="next" title="java按值传递的一些事情">
+                <i class="fa fa-chevron-left"></i> java按值传递的一些事情
               </a>
             
           </div>
@@ -384,10 +375,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/24/java按值传递的一些事情/" rel="prev" title="java按值传递的一些事情">
-                java按值传递的一些事情 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -515,7 +502,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装gradle"><span class="nav-number">1.</span> <span class="nav-text">安装gradle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载源码"><span class="nav-number">2.</span> <span class="nav-text">下载源码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#java集合的一些知识。"><span class="nav-number">1.</span> <span class="nav-text">java集合的一些知识。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Collection"><span class="nav-number">2.</span> <span class="nav-text">Collection</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#List"><span class="nav-number">3.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Set"><span class="nav-number">4.</span> <span class="nav-text">Set</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#AbstractCollection"><span class="nav-number">5.</span> <span class="nav-text">AbstractCollection</span></a></li></ol></div>
             
 
           </div>
