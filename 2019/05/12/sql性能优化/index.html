@@ -94,23 +94,21 @@
 
 
 
-<meta name="description" content="记录下关于阅读Spring源码中衍生的一些问题，关于如何去阅读这种著名的框架源码其实没必要一头扎进去，借助开源的力量或者一些风评不错的书籍配合着阅读往往能让人容易理解而且不至于还没开始就让人衍生退意。如Spring源码深度解析。">
+<meta name="description" content="emm… 最近发生了一点烦恼的事情。包括我自身在内，都陷入了找工作的苦恼，再加上前天得知网易的二面挂了…心情很是苦闷。不知何去何从。自己思考了下，不能坐以待毙。不够确实也是。今年整体经济又低迷。而java竞争目测也达到了巅峰。所以近期也准备入门第二门吃饭语言了，思考了一段时间，主要是在python、go两门中纠结。不过思来想去还是准备入坑python.毕竟有之前的一些基础在对python不至于那">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring源码的一些学习（一）">
-<meta property="og:url" content="https://honghongwen.github.io/2019/04/17/Spring源码的一些学习（一）/index.html">
+<meta property="og:title" content="sql性能优化">
+<meta property="og:url" content="https://honghongwen.github.io/2019/05/12/sql性能优化/index.html">
 <meta property="og:site_name" content="Europa">
-<meta property="og:description" content="记录下关于阅读Spring源码中衍生的一些问题，关于如何去阅读这种著名的框架源码其实没必要一头扎进去，借助开源的力量或者一些风评不错的书籍配合着阅读往往能让人容易理解而且不至于还没开始就让人衍生退意。如Spring源码深度解析。">
+<meta property="og:description" content="emm… 最近发生了一点烦恼的事情。包括我自身在内，都陷入了找工作的苦恼，再加上前天得知网易的二面挂了…心情很是苦闷。不知何去何从。自己思考了下，不能坐以待毙。不够确实也是。今年整体经济又低迷。而java竞争目测也达到了巅峰。所以近期也准备入门第二门吃饭语言了，思考了一段时间，主要是在python、go两门中纠结。不过思来想去还是准备入坑python.毕竟有之前的一些基础在对python不至于那">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://honghongwen.github.io/2019/04/17/Spring源码的一些学习（一）/spring_source_code.jpeg">
-<meta property="og:image" content="https://honghongwen.github.io/2019/04/17/Spring源码的一些学习（一）/gradle.png">
-<meta property="og:image" content="https://honghongwen.github.io/2019/04/17/Spring源码的一些学习（一）/gradle-v.png">
-<meta property="og:image" content="https://honghongwen.github.io/2019/04/17/Spring源码的一些学习（一）/spring.jpg">
-<meta property="og:image" content="https://honghongwen.github.io/2019/04/17/Spring源码的一些学习（一）/defaultlistablebeanfactory.jpg">
-<meta property="og:updated_time" content="2019-04-17T05:37:42.701Z">
+<meta property="og:image" content="https://honghongwen.github.io/2019/05/12/sql性能优化/sql.png">
+<meta property="og:image" content="https://honghongwen.github.io/2019/05/12/sql性能优化/paydate.jpg">
+<meta property="og:image" content="https://honghongwen.github.io/2019/05/12/sql性能优化/index.jpg">
+<meta property="og:updated_time" content="2019-05-11T22:27:03.292Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring源码的一些学习（一）">
-<meta name="twitter:description" content="记录下关于阅读Spring源码中衍生的一些问题，关于如何去阅读这种著名的框架源码其实没必要一头扎进去，借助开源的力量或者一些风评不错的书籍配合着阅读往往能让人容易理解而且不至于还没开始就让人衍生退意。如Spring源码深度解析。">
-<meta name="twitter:image" content="https://honghongwen.github.io/2019/04/17/Spring源码的一些学习（一）/spring_source_code.jpeg">
+<meta name="twitter:title" content="sql性能优化">
+<meta name="twitter:description" content="emm… 最近发生了一点烦恼的事情。包括我自身在内，都陷入了找工作的苦恼，再加上前天得知网易的二面挂了…心情很是苦闷。不知何去何从。自己思考了下，不能坐以待毙。不够确实也是。今年整体经济又低迷。而java竞争目测也达到了巅峰。所以近期也准备入门第二门吃饭语言了，思考了一段时间，主要是在python、go两门中纠结。不过思来想去还是准备入坑python.毕竟有之前的一些基础在对python不至于那">
+<meta name="twitter:image" content="https://honghongwen.github.io/2019/05/12/sql性能优化/sql.png">
 
 
 
@@ -139,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="https://honghongwen.github.io/2019/04/17/Spring源码的一些学习（一）/">
+  <link rel="canonical" href="https://honghongwen.github.io/2019/05/12/sql性能优化/">
 
 
 
 
 
-  <title>Spring源码的一些学习（一） | Europa</title>
+  <title>sql性能优化 | Europa</title>
   
 
 
@@ -258,7 +256,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://honghongwen.github.io/2019/04/17/Spring源码的一些学习（一）/">
+    <link itemprop="mainEntityOfPage" href="https://honghongwen.github.io/2019/05/12/sql性能优化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Europa">
@@ -275,7 +273,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Spring源码的一些学习（一）</h1>
+          <h1 class="post-title" itemprop="name headline">sql性能优化</h1>
         
 
         <div class="post-meta">
@@ -287,8 +285,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-17T11:44:23+08:00">
-                2019-04-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-12T01:19:16+08:00">
+                2019-05-12
               </time>
             
 
@@ -325,32 +323,57 @@
       
 
       
-        <p><img src="/2019/04/17/Spring源码的一些学习（一）/spring_source_code.jpeg" width="50%"></p>
-<p>记录下关于阅读Spring源码中衍生的一些问题，关于如何去阅读这种著名的框架源码其实没必要一头扎进去，借助开源的力量或者一些风评不错的书籍配合着阅读往往能让人容易理解而且不至于还没开始就让人衍生退意。如Spring源码深度解析。</p>
+        <p><img src="/2019/05/12/sql性能优化/sql.png" width="50%"></p>
+<p>emm… 最近发生了一点烦恼的事情。包括我自身在内，都陷入了找工作的苦恼，再加上前天得知网易的二面挂了…心情很是苦闷。不知何去何从。自己思考了下，不能坐以待毙。不够确实也是。今年整体经济又低迷。而java竞争目测也达到了巅峰。所以近期也准备入门第二门吃饭语言了，思考了一段时间，主要是在python、go两门中纠结。不过思来想去还是准备入坑python.毕竟有之前的一些基础在对python不至于那么陌生，有好感在。但是也并没有打算说是放弃Java了，只是曲线救国。先解决温饱问题。要恰饭的嘛～关于Java的复习还是会继续下去。同时也趁这段时间给自己好好充充电。</p>
 <a id="more"></a>
-<h2 id="安装gradle"><a href="#安装gradle" class="headerlink" title="安装gradle"></a>安装gradle</h2><ul>
-<li><p>因为Spring是依赖于gradle做项目管理工具的，导入spring源码前得安装好gradle，之所以说mac环境做开发是真的好嗨…是因为让人很少再去为环境出错而烦恼</p>
-<p><img src="/2019/04/17/Spring源码的一些学习（一）/gradle.png"></p>
+<h3 id="1-mysql性能优化方案"><a href="#1-mysql性能优化方案" class="headerlink" title="1.mysql性能优化方案"></a>1.mysql性能优化方案</h3><ul>
+<li>硬件</li>
+<li>系统配置</li>
+<li>数据库表结构</li>
+<li>sql及索引</li>
+</ul>
+<h3 id="2-关于索引"><a href="#2-关于索引" class="headerlink" title="2.关于索引"></a>2.关于索引</h3><ul>
+<li><p>查看是否开启记录慢查询。</p>
+<blockquote>
+<p>show variables like ‘slow_query%’;</p>
+</blockquote>
 </li>
-<li><p>如图，用mac强大的管理工具  homebrew安装好gradle，如果没使用过homebrew可以去了解一下。<a href="https://brew.sh/" target="_blank" rel="noopener">homebrew地址</a>。这样安装完成的gradle就不用再去配置环境变量了。当然，如果是win或linux的话，找篇靠谱的博客跟着步骤一步一步来就行了，再了解下gradle相关的知识，如果有maven基础的话了解起来应该更快了。</p>
-<p><img src="/2019/04/17/Spring源码的一些学习（一）/gradle-v.png"></p>
+<li><p>如果未开启，则开启并设置日志文件位置，设置非索引亦记录，设置多少秒的慢查询</p>
+<blockquote>
+<p>set global slow_query_log=’ON’;</p>
+</blockquote>
+<blockquote>
+<p>set global slow_query_log_file=’/usr/local/Cellar/mysql/slow.log’;</p>
+</blockquote>
+<blockquote>
+<p>set global log_queries_not_using_indexes=ON; // 会记录未加索引的查询</p>
+</blockquote>
+<blockquote>
+<p>set long_query_time = 1; // 1秒以上</p>
+</blockquote>
 </li>
-<li><p>gradle -v 能正常看到版本信息</p>
+<li><p>给某列加入索引</p>
+<blockquote>
+<p>如这样一条查询</p>
+<p>Select max(payment_date) from payment;</p>
+<p>使用explain解释器分析下sql, explain select max(payment_date) from payment \G</p>
+<p>或者直接在GUI上查看分析结果。如下图</p>
+<p><img src="/2019/05/12/sql性能优化/paydate.jpg"></p>
+</blockquote>
 </li>
 </ul>
-<h2 id="下载源码"><a href="#下载源码" class="headerlink" title="下载源码"></a>下载源码</h2><ul>
-<li><p>在github上找到spring的源码地址，找到文件夹clone下来即可</p>
-<p><a href="https://github.com/spring-projects/spring-framework" target="_blank" rel="noopener"></a></p>
-</li>
-<li><p>用idea打开源码,等他加载完成(需要一段时间，当然，你也可以选择只需要的包，将他的依赖包导入，这样能节省些时间)</p>
-<p><img src="/2019/04/17/Spring源码的一些学习（一）/spring.jpg"></p>
-</li>
-<li><p>查看观察的第一个类 DefaultListableBeanFactory的类继承关系</p>
-<p><img src="/2019/04/17/Spring源码的一些学习（一）/defaultlistablebeanfactory.jpg"></p>
-</li>
-<li><p>这样一步步下来，其实整个源码也是有迹可循的，其实为何要去阅读源码，这个大家各持所见，通过阅读源码，能学到不少的命名规范，以及源码内衍生出来的一堆衍生知识，比起嚷嚷着我要学习而无从下手，衍生为焦虑的堆积，阅读源码还是一种很不错的学习方法的。同时也是提高自信的一种方式，像之前吵吵的很火的为什么要学习英语这种问题。都是一个道理。举个列子，如上图SimpleAliasRegistry类实现了AliasRegisty，其中使用了ConcurrentHashMap做缓存,我对ConcurrentHashMap本身不够了解的话，我会继续去研究研究ConcurrentHashMap，以及map本身做本地缓存的方式，衍生到与ThreadLocal的使用方式，再到ConcurrentHashMap作为jdk的源码，大量使用的位运算符，这样一步步的继续下去，当然，整个过程是漫长的，但是这样一步步的学习下去会大幅度加强本身薄弱的知识面。工作也有一年多了，也遇到过形形色色不少的同行，印象最深的是老东家的老大教会了我很多东西，记得当时做微信公众号相关的时候，他带着我一步步跳到源码的底层去深究为何这般那般，他愿意教，我愿意学，说实话，一路走下来抱着感恩的心，不管生活如何，想起来还是有点温暖。最后也祝愿各位猿们生活顺心，工作顺利啦 = =。</p>
+<ul>
+<li><p>分析上图</p>
+<blockquote>
+<p>可看出type是All，进行的全表扫描。这种情况针对payment_date增加索引后</p>
+<p>create index idx_paydate on payment(payment_date);</p>
+<p>再次查看分析情况</p>
+<p><img src="/2019/05/12/sql性能优化/index.jpg"></p>
+<p>此时，sql执行为最优</p>
+</blockquote>
 </li>
 </ul>
+<p>先睡了，实在扛不住了。</p>
 
       
     </div>
@@ -375,8 +398,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/10/Linux常用知识/" rel="next" title="Linux常用知识">
-                <i class="fa fa-chevron-left"></i> Linux常用知识
+              <a href="/2019/05/05/springboot整合/" rel="next" title="springboot整合">
+                <i class="fa fa-chevron-left"></i> springboot整合
               </a>
             
           </div>
@@ -384,10 +407,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/24/java按值传递的一些事情/" rel="prev" title="java按值传递的一些事情">
-                java按值传递的一些事情 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -515,7 +534,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装gradle"><span class="nav-number">1.</span> <span class="nav-text">安装gradle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载源码"><span class="nav-number">2.</span> <span class="nav-text">下载源码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-mysql性能优化方案"><span class="nav-number">1.</span> <span class="nav-text">1.mysql性能优化方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-关于索引"><span class="nav-number">2.</span> <span class="nav-text">2.关于索引</span></a></li></ol></div>
             
 
           </div>
