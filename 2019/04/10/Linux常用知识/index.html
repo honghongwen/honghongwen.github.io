@@ -104,7 +104,7 @@
 <meta property="og:image" content="https://honghongwen.github.io/2019/04/10/Linux常用知识/linux.png">
 <meta property="og:image" content="https://honghongwen.github.io/2019/04/10/Linux常用知识/free.png">
 <meta property="og:image" content="https://honghongwen.github.io/2019/04/10/Linux常用知识/centos.png">
-<meta property="og:updated_time" content="2019-04-25T08:42:23.150Z">
+<meta property="og:updated_time" content="2019-06-12T08:15:31.111Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux常用知识">
 <meta name="twitter:description" content="稍微记录下日常使用的一些linux命令及操作，之后可能会继续更新">
@@ -359,6 +359,42 @@
 <li>su 切换管理员权限</li>
 <li>scp [source] root@ip:[target]  将文件上传到服务器</li>
 <li>ssh root@ip -p [port]  连接上服务器</li>
+</ul>
+<p>###3.关于阿里云上端口防火墙设置</p>
+<ul>
+<li><p>查看已添加的规则</p>
+<blockquote>
+<p>iptables -L -n -v</p>
+</blockquote>
+</li>
+<li><p>关闭防火墙</p>
+<blockquote>
+<p>systemctl stop firewalld.service</p>
+</blockquote>
+</li>
+<li><p>关闭自启动</p>
+<blockquote>
+<p>systemctl disable firewalld.service</p>
+</blockquote>
+</li>
+<li><p>编辑防火墙相关端口</p>
+<blockquote>
+<p>vi /etc/sysconfig/iptables</p>
+</blockquote>
+</li>
+<li><p>开放指定端口 如8989</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-A INPUT -m state --state NEW -m tcp -p tcp --dport 8989 -j ACCEPT</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启防火墙配置</p>
+<blockquote>
+<p>systemctl restart iptables.service</p>
+</blockquote>
+</li>
+<li><p>设置防火墙开机启动</p>
+<blockquote>
+<p>systemctl enable iptables.service</p>
+</blockquote>
+</li>
 </ul>
 
       
