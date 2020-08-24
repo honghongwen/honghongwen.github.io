@@ -94,23 +94,20 @@
 
 
 
-<meta name="description" content="记录下关于阅读Spring源码中衍生的一些问题，关于如何去阅读这种著名的框架源码其实没必要一头扎进去，借助开源的力量或者一些风评不错的书籍配合着阅读往往能让人容易理解而且不至于还没开始就让人衍生退意。如Spring源码深度解析。">
+<meta name="description" content="最近在找工作了,用markdown写份简单的简历吧～喵～">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring源码的一些学习（一）">
-<meta property="og:url" content="https://honghongwen.github.io/2019/04/17/Spring源码的一些学习（一）/index.html">
+<meta property="og:title" content="七夕礼物">
+<meta property="og:url" content="https://honghongwen.github.io/2020/08/24/七夕礼物/index.html">
 <meta property="og:site_name" content="Europa">
-<meta property="og:description" content="记录下关于阅读Spring源码中衍生的一些问题，关于如何去阅读这种著名的框架源码其实没必要一头扎进去，借助开源的力量或者一些风评不错的书籍配合着阅读往往能让人容易理解而且不至于还没开始就让人衍生退意。如Spring源码深度解析。">
+<meta property="og:description" content="最近在找工作了,用markdown写份简单的简历吧～喵～">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://honghongwen.github.io/2019/04/17/Spring源码的一些学习（一）/spring_source_code.jpeg">
-<meta property="og:image" content="https://honghongwen.github.io/2019/04/17/Spring源码的一些学习（一）/gradle.png">
-<meta property="og:image" content="https://honghongwen.github.io/2019/04/17/Spring源码的一些学习（一）/gradle-v.png">
-<meta property="og:image" content="https://honghongwen.github.io/2019/04/17/Spring源码的一些学习（一）/spring.jpg">
-<meta property="og:image" content="https://honghongwen.github.io/2019/04/17/Spring源码的一些学习（一）/defaultlistablebeanfactory.jpg">
-<meta property="og:updated_time" content="2019-04-17T05:37:42.701Z">
+<meta property="og:image" content="https://honghongwen.github.io/2020/08/24/七夕礼物/crab.jpg">
+<meta property="og:image" content="https://honghongwen.github.io/2020/08/24/七夕礼物/profession.gif">
+<meta property="og:updated_time" content="2020-08-24T03:40:41.570Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring源码的一些学习（一）">
-<meta name="twitter:description" content="记录下关于阅读Spring源码中衍生的一些问题，关于如何去阅读这种著名的框架源码其实没必要一头扎进去，借助开源的力量或者一些风评不错的书籍配合着阅读往往能让人容易理解而且不至于还没开始就让人衍生退意。如Spring源码深度解析。">
-<meta name="twitter:image" content="https://honghongwen.github.io/2019/04/17/Spring源码的一些学习（一）/spring_source_code.jpeg">
+<meta name="twitter:title" content="七夕礼物">
+<meta name="twitter:description" content="最近在找工作了,用markdown写份简单的简历吧～喵～">
+<meta name="twitter:image" content="https://honghongwen.github.io/2020/08/24/七夕礼物/crab.jpg">
 
 
 
@@ -139,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="https://honghongwen.github.io/2019/04/17/Spring源码的一些学习（一）/">
+  <link rel="canonical" href="https://honghongwen.github.io/2020/08/24/七夕礼物/">
 
 
 
 
 
-  <title>Spring源码的一些学习（一） | Europa</title>
+  <title>七夕礼物 | Europa</title>
   
 
 
@@ -258,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://honghongwen.github.io/2019/04/17/Spring源码的一些学习（一）/">
+    <link itemprop="mainEntityOfPage" href="https://honghongwen.github.io/2020/08/24/七夕礼物/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Europa">
@@ -275,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Spring源码的一些学习（一）</h1>
+          <h1 class="post-title" itemprop="name headline">七夕礼物</h1>
         
 
         <div class="post-meta">
@@ -287,8 +284,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-17T11:44:23+08:00">
-                2019-04-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-24T10:49:26+08:00">
+                2020-08-24
               </time>
             
 
@@ -325,32 +322,29 @@
       
 
       
-        <p><img src="/2019/04/17/Spring源码的一些学习（一）/spring_source_code.jpeg" width="50%"></p>
-<p>记录下关于阅读Spring源码中衍生的一些问题，关于如何去阅读这种著名的框架源码其实没必要一头扎进去，借助开源的力量或者一些风评不错的书籍配合着阅读往往能让人容易理解而且不至于还没开始就让人衍生退意。如Spring源码深度解析。</p>
-<a id="more"></a>
-<h2 id="安装gradle"><a href="#安装gradle" class="headerlink" title="安装gradle"></a>安装gradle</h2><ul>
-<li><p>因为Spring是依赖于gradle做项目管理工具的，导入spring源码前得安装好gradle，之所以说mac环境做开发是真的好嗨…是因为让人很少再去为环境出错而烦恼</p>
-<p><img src="/2019/04/17/Spring源码的一些学习（一）/gradle.png"></p>
-</li>
-<li><p>如图，用mac强大的管理工具  homebrew安装好gradle，如果没使用过homebrew可以去了解一下。<a href="https://brew.sh/" target="_blank" rel="noopener">homebrew地址</a>。这样安装完成的gradle就不用再去配置环境变量了。当然，如果是win或linux的话，找篇靠谱的博客跟着步骤一步一步来就行了，再了解下gradle相关的知识，如果有maven基础的话了解起来应该更快了。</p>
-<p><img src="/2019/04/17/Spring源码的一些学习（一）/gradle-v.png"></p>
-</li>
-<li><p>gradle -v 能正常看到版本信息</p>
-</li>
-</ul>
-<h2 id="下载源码"><a href="#下载源码" class="headerlink" title="下载源码"></a>下载源码</h2><ul>
-<li><p>在github上找到spring的源码地址，找到文件夹clone下来即可</p>
-<p><a href="https://github.com/spring-projects/spring-framework" target="_blank" rel="noopener"></a></p>
-</li>
-<li><p>用idea打开源码,等他加载完成(需要一段时间，当然，你也可以选择只需要的包，将他的依赖包导入，这样能节省些时间)</p>
-<p><img src="/2019/04/17/Spring源码的一些学习（一）/spring.jpg"></p>
-</li>
-<li><p>查看观察的第一个类 DefaultListableBeanFactory的类继承关系</p>
-<p><img src="/2019/04/17/Spring源码的一些学习（一）/defaultlistablebeanfactory.jpg"></p>
-</li>
-<li><p>这样一步步下来，其实整个源码也是有迹可循的，其实为何要去阅读源码，这个大家各持所见，通过阅读源码，能学到不少的命名规范，以及源码内衍生出来的一堆衍生知识，比起嚷嚷着我要学习而无从下手，衍生为焦虑的堆积，阅读源码还是一种很不错的学习方法的。同时也是提高自信的一种方式，像之前吵吵的很火的为什么要学习英语这种问题。都是一个道理。举个列子，如上图SimpleAliasRegistry类实现了AliasRegisty，其中使用了ConcurrentHashMap做缓存,我对ConcurrentHashMap本身不够了解的话，我会继续去研究研究ConcurrentHashMap，以及map本身做本地缓存的方式，衍生到与ThreadLocal的使用方式，再到ConcurrentHashMap作为jdk的源码，大量使用的位运算符，这样一步步的继续下去，当然，整个过程是漫长的，但是这样一步步的学习下去会大幅度加强本身薄弱的知识面。工作也有一年多了，也遇到过形形色色不少的同行，印象最深的是老东家的老大教会了我很多东西，记得当时做微信公众号相关的时候，他带着我一步步跳到源码的底层去深究为何这般那般，他愿意教，我愿意学，说实话，一路走下来抱着感恩的心，不管生活如何，想起来还是有点温暖。最后也祝愿各位猿们生活顺心，工作顺利啦 = =。</p>
-</li>
-</ul>
+        <p><img src="/2020/08/24/七夕礼物/crab.jpg" width="50%"><br>最近在找工作了,用markdown写份简单的简历吧～喵～<br><a id="more"></a></p>
+<h4 id="送些啥呢-送些啥呢，不会吧不会吧-不会真的有人七夕能自己想出来送什么给女朋友吧。不会吧"><a href="#送些啥呢-送些啥呢，不会吧不会吧-不会真的有人七夕能自己想出来送什么给女朋友吧。不会吧" class="headerlink" title="送些啥呢 送些啥呢，不会吧不会吧 不会真的有人七夕能自己想出来送什么给女朋友吧。不会吧"></a>送些啥呢 送些啥呢，不会吧不会吧 不会真的有人七夕能自己想出来送什么给女朋友吧。不会吧</h4><p>不然写篇文章夸一夸她？</p>
+<p>我来有理有据的夸一夸。</p>
+<h5 id="人美心善"><a href="#人美心善" class="headerlink" title="人美心善"></a>人美心善</h5><blockquote>
+<p>人美这个是没有道理的，不用解释了。心善呢，何为心善呢。我太坏了，所以她太善良。</p>
+</blockquote>
+<h5 id="天然呆"><a href="#天然呆" class="headerlink" title="天然呆"></a>天然呆</h5><blockquote>
+<p>脑回路有点emmm….一言难尽，天然呆那种可爱。</p>
+</blockquote>
+<h5 id="太会了"><a href="#太会了" class="headerlink" title="太会了"></a>太会了</h5><blockquote>
+<p>虽然平时的脑回路太呆 - -! 但是，她太会了！满足了我对女友的一切幻想，太甜了。</p>
+</blockquote>
+<h5 id="挣钱养家"><a href="#挣钱养家" class="headerlink" title="挣钱养家"></a>挣钱养家</h5><blockquote>
+<p>女友挣钱养家，我洗衣拖地，吃口软的，不丢人 嗯</p>
+</blockquote>
+<h5 id="甜"><a href="#甜" class="headerlink" title="甜"></a>甜</h5><blockquote>
+<p>甜 太甜了，像春天树林中吹过的风，相处不腻，沁人心脾。甜</p>
+</blockquote>
+<h5 id="黏人"><a href="#黏人" class="headerlink" title="黏人"></a>黏人</h5><blockquote>
+<p>感觉身体被掏空.jpg   i enjoy it. 我更粘她</p>
+</blockquote>
+<p>么么哒！</p>
+<p><img src="/2020/08/24/七夕礼物/profession.gif"> </p>
 
       
     </div>
@@ -375,8 +369,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/09/简历/" rel="next" title="简历">
-                <i class="fa fa-chevron-left"></i> 简历
+              <a href="/2019/05/03/Java集合分析/" rel="next" title="Java集合分析">
+                <i class="fa fa-chevron-left"></i> Java集合分析
               </a>
             
           </div>
@@ -384,10 +378,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/24/java按值传递的一些事情/" rel="prev" title="java按值传递的一些事情">
-                java按值传递的一些事情 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -515,7 +505,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装gradle"><span class="nav-number">1.</span> <span class="nav-text">安装gradle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载源码"><span class="nav-number">2.</span> <span class="nav-text">下载源码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#送些啥呢-送些啥呢，不会吧不会吧-不会真的有人七夕能自己想出来送什么给女朋友吧。不会吧"><span class="nav-number">1.</span> <span class="nav-text">送些啥呢 送些啥呢，不会吧不会吧 不会真的有人七夕能自己想出来送什么给女朋友吧。不会吧</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#人美心善"><span class="nav-number">1.1.</span> <span class="nav-text">人美心善</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#天然呆"><span class="nav-number">1.2.</span> <span class="nav-text">天然呆</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#太会了"><span class="nav-number">1.3.</span> <span class="nav-text">太会了</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#挣钱养家"><span class="nav-number">1.4.</span> <span class="nav-text">挣钱养家</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#甜"><span class="nav-number">1.5.</span> <span class="nav-text">甜</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#黏人"><span class="nav-number">1.6.</span> <span class="nav-text">黏人</span></a></li></ol></li></ol></div>
             
 
           </div>
