@@ -102,7 +102,7 @@
 <meta property="og:description" content="一些经常忘记但常用的命令">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://honghongwen.github.io/2021/01/27/一些命令/command.jpeg">
-<meta property="og:updated_time" content="2021-01-27T08:20:40.693Z">
+<meta property="og:updated_time" content="2021-01-27T08:47:14.718Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一些命令">
 <meta name="twitter:description" content="一些经常忘记但常用的命令">
@@ -324,7 +324,7 @@
         <p><img src="/2021/01/27/一些命令/command.jpeg" width="50%"><br>一些经常忘记但常用的命令</p>
 <a id="more"></a>
 <h3 id="1-hexo篇"><a href="#1-hexo篇" class="headerlink" title="1.hexo篇"></a>1.hexo篇</h3><blockquote>
-<p>hexo new <title><br>新建一篇博客</title></p>
+<p>hexo new [title]<br>新建一篇博客</p>
 </blockquote>
 <blockquote>
 <p>hexo generate<br>生成静态文件</p>
@@ -333,10 +333,10 @@
 <p>hexo deploy<br>部署网站</p>
 </blockquote>
 <h3 id="2-git篇"><a href="#2-git篇" class="headerlink" title="2.git篇"></a>2.git篇</h3><blockquote>
-<p>git log + git reset <version><br>以上两个命令可以协同将代码回滚到具体哪次提交</version></p>
+<p>git log + git reset [version]<br>以上两个命令可以协同将代码回滚到具体哪次提交</p>
 </blockquote>
 <blockquote>
-<p>git revert <version><br>git revert也是回滚，但是他是回滚具体<version>提交，区分与reset回退到<version>版本。revert会在版本基础上再多一次提交记录。用于记录回滚的代码。</version></version></version></p>
+<p>git revert [version]<br>git revert也是回滚，但是他是回滚具体[version]提交，区分与reset回退到[version]版本。revert会在版本基础上再多一次提交记录。用于记录回滚的代码。</p>
 </blockquote>
 <blockquote>
 <p>git clean -fd<br>回滚代码后，一些新建的文件会依然存在你的本地，状态显示是在被git add .之前。 一个一个手动删除太麻烦。这个命令可以帮助删除执行回滚后仅在你本地存在的文件。</p>
